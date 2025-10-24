@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero">
+    <h1>Track Health. Build Trust. Hire Smart.</h1>
+    <p>Your recruiter-friendly health tracking platform with audit traceability.</p>
+    <div class="cta-buttons">
+        <a href="@Url.Action("TryDemo", "Home")" class="btn primary">Try Demo</a>
+
+        <a href="@Url.Action("Index", "Recruiter")" class="btn secondary">Login as Recruiter</a>
+    </div>
+</section>
+
+<section class="features">
+    <h2>Platform Highlights</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Patient Profile Cards</h3>
+            <p>Quick summaries for recruiter context.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Visit Audit Logs</h3>
+            <p>Trace every update with full transparency.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Recruiter Dashboard</h3>
+            <p>Track activity, alerts, and summaries in one place.</p>
+        </div>
+    </div>
+</section>

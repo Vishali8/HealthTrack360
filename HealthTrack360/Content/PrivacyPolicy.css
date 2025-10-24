@@ -1,0 +1,16 @@
+﻿.privacy-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+    .privacy-content h2 {
+        margin-top: 2rem;
+        color: #004080;
+    }
+
+    .privacy-content ul {
+        padding-left: 1.5rem;
+    }

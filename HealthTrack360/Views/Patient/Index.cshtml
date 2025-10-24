@@ -1,0 +1,27 @@
+﻿@model IEnumerable<HealthTrack360.Models.Patient>
+
+<h2>Patient List</h2>
+<table class="table table-bordered">
+    <tr><th>Name</th><th>Gender</th><th>DOB</th><th>Contact</th><th>Email</th></tr>
+    @foreach (var p in Model)
+    {
+<tr>
+    <td>@p.FullName</td>
+    <td>@p.Gender</td>
+    <td>@p.DOB.ToShortDateString()</td>
+    <td>@p.ContactNumber</td>
+    <td>@p.Email</td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = p.PatientID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = p.PatientID }, new { @class = "btn btn-danger" })
+    </td>
+    <td>
+        @Html.ActionLink("Log Visit", "Create", "Visit", new { patientId = p.PatientID }, new { target = "_blank", @class = "btn btn-info" })
+    </td>
+    <td>
+        @Html.ActionLink("View Visits", "Index", "Visit", new { patientId = p.PatientID }, new { target = "_blank", @class = "btn btn-secondary" })
+    </td>
+</tr>
+}
+</table>
+@Html.ActionLink("Add New Patient", "Create", null, new { @class = "btn btn-primary" })

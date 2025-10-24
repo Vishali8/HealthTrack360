@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Recruiter Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero">
+    <h1>Welcome, @Session["RecruiterEmail"]!</h1>
+    <p>This is your live dashboard with real data.</p>
+</section>
+
+<section class="features">
+    <h2>Summary</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Total Patients</h3>
+            <p>@ViewBag.TotalPatients</p>
+        </div>
+        <div class="feature-card">
+            <h3>Visits This Week</h3>
+            <p>@ViewBag.RecentVisits</p>
+        </div>
+        <div class="feature-card">
+            <h3>Active Alerts</h3>
+            <p>@ViewBag.ActiveAlerts</p>
+        </div>
+    </div>
+    <a href="@Url.Action("Index", "Patient")">View All Patient details</a>
+</section>

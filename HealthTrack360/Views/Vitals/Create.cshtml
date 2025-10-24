@@ -1,0 +1,31 @@
+﻿@model HealthTrack360.Models.Vitals
+@{
+    ViewBag.Title = "Add Vitals";
+}
+
+<h2>Add Vitals</h2>
+<form method="post">
+    <input type="hidden" name="VisitID" value="@ViewBag.VisitID" />
+
+    <div class="form-group">
+        <label>Blood Pressure</label>
+        <input type="text" name="BloodPressure" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Sugar Level (mg/dL)</label>
+        <input type="number" step="0.1" name="SugarLevel" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Pulse Rate (bpm)</label>
+        <input type="number" name="PulseRate" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Recorded at</label>
+        <input type="datetime" name="RecordedAt" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Vitals</button>
+</form>

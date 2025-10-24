@@ -1,0 +1,35 @@
+﻿@model HealthTrack360.Models.Patient
+
+<h2>Edit Patient</h2>
+<form method="post">
+    <input type="hidden" name="PatientID" value="@Model.PatientID" />
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="FullName" value="@Model.FullName" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Gender</label>
+        <input type="text" name="Gender" value="@Model.Gender" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" name="DOB" value="@Model.DOB.ToString("yyyy-MM-dd")" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" name="ContactNumber" value="@Model.ContactNumber" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="Email" value="@Model.Email" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+</form>
+
+

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<HealthTrack360.Models.Visit>
+
+<h2>Visit Log</h2>
+<table class="table">
+    <tr><th>Date</th><th>Department</th><th>Doctor</th><th>Reason</th><th>Patient</th></tr>
+    @foreach (var v in Model)
+    {
+<tr>
+    <td>@v.VisitDate.ToShortDateString()</td>
+    <td>@v.Department</td>
+    <td>@v.DoctorName</td>
+    <td>@v.Reason</td>
+    <td>@v.Patient.FullName</td>
+    <td>@Html.ActionLink("Check Vitals", "Index", "Vitals", new { visitId = v.VisitID }, new { @class = "btn btn-primary" })</td>
+    <td>@Html.ActionLink("Edit", "Edit", "Visit", new { id = v.VisitID }, new { @class = "btn btn-warning" })</td>
+    <td>@Html.ActionLink("Delete", "Delete", "Visit", new { id = v.VisitID }, new { @class = "btn btn-Danger" })</td>
+</tr>}
+</table>
+       
+
+@Html.ActionLink("Log New Visit", "Create", new { patientId = ViewBag.PatientID}, new { @class = "btn btn-secondary" })

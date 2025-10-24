@@ -1,0 +1,24 @@
+﻿@model HealthTrack360.Models.Vitals
+@{
+    ViewBag.Title = "Delete Vitals";
+}
+
+<h2>Confirm Delete</h2>
+<div class="alert alert-warning">
+    <strong>Are you sure you want to delete this vitals entry?</strong>
+</div>
+
+<table class="table">
+    <tr><th>Blood Pressure</th><td>@Model.BloodPressure</td></tr>
+    <tr><th>Sugar Level</th><td>@Model.SugarLevel</td></tr>
+    <tr><th>Pulse Rate</th><td>@Model.PulseRate</td></tr>
+    <tr><th>Recorded At</th><td>@Model.RecordedAt.ToString("dd-MMM-yyyy HH:mm")</td></tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.VitalID)
+    @Html.HiddenFor(m => m.VisitID)
+    <button type="submit" class="btn btn-danger">Delete</button>
+    @Html.ActionLink("Cancel", "Index", new { visitId = Model.VisitID }, new { @class = "btn btn-secondary" })
+}

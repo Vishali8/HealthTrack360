@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Recruiter Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero">
+    <h1>Register as Recruiter</h1>
+    <p>Create your HealthTrack360 account.</p>
+
+    @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label>Email:</label>
+            @Html.TextBox("email", null, new { @class = "form", required = "required", type = "email" })
+        </div>
+
+        <div class="form-group">
+            <label>Password:</label>
+            @Html.Password("password", new { @class = "form-control", required = "required" })
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password:</label>
+            @Html.Password("confirmPassword", new { @class = "form-control", required = "required" })
+        </div>
+
+        <button type="submit" class="btn primary">Register</button>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <p style="color:green; margin-top:1rem;">@ViewBag.Message</p>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:red; margin-top:1rem;">@ViewBag.Error</p>
+    }
+</section>

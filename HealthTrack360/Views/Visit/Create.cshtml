@@ -1,0 +1,26 @@
+﻿@model HealthTrack360.Models.Visit
+
+<h2>Log New Visit</h2>
+<form method="post">
+    <div class="form-group">
+        <label>Visit Date</label>
+        <input type="date" name="VisitDate" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Department</label>
+        <input type="text" name="Department" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Doctor Name</label>
+        <input type="text" name="DoctorName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Reason</label>
+        <input type="text" name="Reason" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Patient</label>
+        @Html.DropDownList("PatientID", (IEnumerable<SelectListItem>)ViewBag.PatientList, "Select Patient", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

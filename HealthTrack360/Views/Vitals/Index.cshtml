@@ -1,0 +1,51 @@
+﻿@model List<HealthTrack360.Models.Vital>
+@{
+    ViewBag.Title = "Vitals History";
+}
+
+<h2>Vitals History for Visit #@ViewBag.VisitID</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Recorded At</th>
+            <th>Blood Pressure</th>
+            <th>Sugar Level (mg/dL)</th>
+            <th>Pulse Rate (bpm)</th>
+            <th>Alerts</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.RecordedAt.ToString("dd-MMM-yyyy HH:mm")</td>
+                <td>@v.BloodPressure</td>
+                <td>@v.SugarLevel</td>
+                <td>@v.PulseRate</td>
+                <td>
+                    @if (v.Alerts != null && v.Alerts.Any())
+                    {
+                        <ul>
+                            @foreach (var alert in v.Alerts)
+                            {
+                                <li><span class="text-danger">@alert.Description</span> (@alert.AlertType)</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span class="text-success">No alerts</span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Vitals", new { id = v.VitalID }, new { @class = "btn btn-sm btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", "Vitals", new { id = v.VitalID }, new { @class = "btn btn-sm btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Vitals", new { visitId = ViewBag.VisitID })" class="btn btn-primary">Add New Vitals</a>

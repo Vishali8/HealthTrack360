@@ -1,0 +1,28 @@
+﻿@model HealthTrack360.Models.PatientDetails
+@{
+    ViewBag.Title = "Patient Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Patient: @Model.Patient.FullName</h2>
+<p>DOB: @Model.Patient.DOB.ToShortDateString()</p>
+
+<h3>Visits</h3>
+@foreach (var visit in Model.Visits)
+{
+    <div class="visit-card">
+        <p><strong>Date:</strong> @visit.VisitDate.ToShortDateString()</p>
+        <p><strong>Doctor:</strong> @visit.DoctorName</p>
+
+        <h4>Vitals</h4>
+        <ul>
+            @foreach (var vital in Model.Vitals.Where(v => v.VisitID == visit.VisitID))
+            {
+                <li>Blood Pressure : @vital.BloodPressure</li>
+                <li>SugarLevel : @vital.SugarLevel</li>
+                <li>PulseRate : @vital.PulseRate</li>
+                <li>Recorded at : @vital.RecordedAt</li>
+            }
+        </ul>
+    </div>    
+}

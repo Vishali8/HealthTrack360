@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var patient = ViewBag.Patient as HealthTrack360.Models.Patient;
+    var visit = ViewBag.Visit as HealthTrack360.Models.Visit;
+    var vital = ViewBag.Vital as HealthTrack360.Models.Vital;
+    var alert = ViewBag.Alert as HealthTrack360.Models.Alert;
+}
+
+<section class="hero">
+    <h1>HealthTrack360 Demo</h1>
+    <p>This is a preview of the recruiter dashboard and patient tracking features.</p>
+</section>
+
+<section class="features">
+    <h2>Sample Modules</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Patient Profile Card</h3>
+            <p>
+                <strong>Name:</strong> @patient.FullName <br />
+                <strong>DOB:</strong> @patient.DOB.ToShortDateString()
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Visit Audit Log</h3>
+            <p>
+                <strong>Visit Date:</strong> @visit.VisitDate.ToShortDateString() <br />
+                <strong>Doctor:</strong> @visit.DoctorName
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Vital Snapshot</h3>
+            <p>
+                <strong>Type:</strong> BloodPressure <br />
+                <strong>Value:</strong> @vital.BloodPressure
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Alert Preview</h3>
+            <p>
+                <strong>Message:</strong> @alert.Description <br />
+                <strong>Date:</strong> @alert.TriggeredAt.ToShortDateString()
+            </p>
+        </div>
+    </div>
+</section>
+

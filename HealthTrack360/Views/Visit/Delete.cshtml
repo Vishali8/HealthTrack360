@@ -1,0 +1,21 @@
+﻿@model HealthTrack360.Models.Visit
+
+<h2>Delete Visit for a patient</h2>
+<div class="alert alert-danger">
+    <strong>Warning:</strong> You are about to delete this visit record. This action cannot be undone.
+</div>
+
+<table class="table">
+    <tr><th>Patient Name</th><td>@Model.Patient.FullName</td></tr>
+    <tr><th>VisitDate</th><td>@Model.VisitDate.ToShortDateString()</td></tr>
+    <tr><th>Doctor Name</th><td>@Model.DoctorName</td></tr>
+    <tr><th>Department</th><td>@Model.Department</td></tr>
+    <tr><th>Reason</th><td>@Model.Reason</td></tr>
+</table>
+
+<form method="post" action="@Url.Action("Delete", "Visit", new { id = Model.VisitID })">
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this patient?');">Confirm Delete</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+</form>
+
+
